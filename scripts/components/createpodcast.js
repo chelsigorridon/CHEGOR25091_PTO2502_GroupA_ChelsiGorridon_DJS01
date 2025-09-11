@@ -8,7 +8,7 @@ export function ExportToMain(MainLayout) {
 podcasts.forEach(card => {
     
 const podcastContainer = document.createElement("div")
-podcastContainer.className ="podcastContainer"
+podcastContainer.className =("podcastContainer");
 
 podcastContainer.innerHTML = `
 <div>
@@ -17,8 +17,11 @@ podcastContainer.innerHTML = `
     </div>
     <div class="podcastInfo">
     <h3 class="podcastTitle">${card.title}</h3>
-    <p class="podcastSeason">${card.season}</p>
+    <p class="podcastSeason">${card.seasons}</p>
     <p class="podcastDescription">${card.description}</p>
+    <p class="podcastGenre">${card.genres}</p>
+    <p class="podcastDate">${card.updated}</p>
+
     </div>
 </div>
 
