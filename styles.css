@@ -1,0 +1,37 @@
+
+* {
+  box-sizing: border-box; 
+}
+
+
+.Layout{
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: 20px; 
+   
+
+}
+
+.podcastContainer{
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 250px;
+  height: 300px;
+
+  
+}
+
+
+.imageContainer {
+  overflow: hidden;
+  object-fit: scale-down;
+  width: 200px;
+  height: 150px;
+  margin: auto;
+  border-radius: 5px;
+  display: inline-block;
+}
