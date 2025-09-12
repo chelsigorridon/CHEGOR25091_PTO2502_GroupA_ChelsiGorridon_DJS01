@@ -3,17 +3,8 @@
   box-sizing: border-box; 
 }
 
-
-.Layout{
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-    gap: 20px; 
-   
-
-}
-
 .podcastContainer{
-  background: #fff;
+  background: white;
   border: 1px solid #ddd;
   padding: 16px;
   margin: 10px 0;
@@ -27,6 +18,39 @@
 
 
 .imageContainer {
+  overflow: hidden;
+  object-fit: scale-down;
+  width: 200px;
+  height: 150px;
+  margin: auto;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 500px; height: 350px;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 6px;
+  width: 300px;
+}
+
+.close-modal-btn {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.modalImage {
   overflow: hidden;
   object-fit: scale-down;
   width: 200px;
