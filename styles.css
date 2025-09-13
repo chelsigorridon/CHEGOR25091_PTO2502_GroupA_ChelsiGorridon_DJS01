@@ -3,16 +3,73 @@
   box-sizing: border-box; 
 }
 
-.podcastContainer{
+body {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    background: #ccd5fe; 
+    box-shadow: 0 4px 8px rgba(166, 169, 243, 0.1);
+    border-radius:  8px;
+    font-family:Arial, Helvetica, sans-serif ;
+}
+
+
+#card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* responsive grid */
+  gap: 20px;
+  padding: 20px;
+}
+
+.cardContainer {
   background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cardContainer:hover {
+  transform: scale(1.05);
+}
+
+.podcastImage {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.modalInfo{
+   background: white;
   border: 1px solid #ddd;
   padding: 16px;
   margin: 10px 0;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 250px;
-  height: 300px;
+  width: 900px;
+  height: 500px;
+  
+}
 
+
+.podcast_Container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 5px;
+  padding: 20px;
+}
+
+
+.cardContainer{
+  background: white;
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(154, 157, 233, 0.1);
+  width: 300px; 
+  height: 300px;
   
 }
 
@@ -20,7 +77,7 @@
 .imageContainer {
   overflow: hidden;
   object-fit: scale-down;
-  width: 200px;
+  width: 250px;
   height: 150px;
   margin: auto;
   border-radius: 5px;
@@ -30,9 +87,9 @@
 .modal {
   display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 500px; height: 350px;
-  background: rgba(0,0,0,0.6);
+  top: 50; left: 50;
+  background-color: #ddd;
+  width: 700px; height: 350px;
   justify-content: center;
   align-items: center;
 }
@@ -50,12 +107,18 @@
   font-size: 20px;
 }
 
-.modalImage {
-  overflow: hidden;
-  object-fit: scale-down;
-  width: 200px;
-  height: 150px;
-  margin: auto;
-  border-radius: 5px;
-  display: inline-block;
+
+.podcastImage {
+  max-width: 250px;
+  max-height: 150px;
+  display: block;
+  margin: 0 auto; 
+
+}
+
+.modalImageContainer{
+   max-width: 300px;
+  max-height: 200px;
+  display: block;
+  margin: 0 auto; 
 }
