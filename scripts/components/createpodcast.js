@@ -1,36 +1,50 @@
-import { podcasts } from "../data.js"
+ import { podcasts,genres, seasons } from "../data.js"
+import { openModal } from "./createmodal.js";
+import { DateUtility } from "../utilities/dateutils.js";
+import { exportGenre } from "../utilities/genreservice.js";
 
-export function ExportToMain(MainLayout) {
-  const container$ = document.getElementById(MainLayout);
+export function ExportToMain(podcastContainer) {
+  const container$ = document.getElementById(podcastContainer);
 
   container$.innerHTML = "";
 
 podcasts.forEach(card => {
     
-const podcastContainer = document.createElement("div")
-podcastContainer.className =("podcastContainer");
+const cardContainer = document.createElement("div")
+cardContainer.className =("cardContainer");
+    
+cardContainer.innerHTML = `
 
-podcastContainer.innerHTML = `
-<div>
+<div class="podcastCard" data-podcast-id="${card.id}">
 <div class ="imageContainer">
     <img class="podcastImage" src="${card.image}" alt="podcast image">
     </div>
     <div class="podcastInfo">
     <h3 class="podcastTitle">${card.title}</h3>
-    <p class="podcastSeason">${card.seasons}</p>
-    <p class="podcastDescription">${card.description}</p>
-    <p class="podcastGenre">${card.genres}</p>
-    <p class="podcastDate">${card.updated}</p>
+    <p class="podcastSeason">${cardSeasons}</p>
+    <div id="cardGenre-${card.id}"></div>
+    <div id="cardDate-${card.id}"></div>
+    <div id="cardSeasons-${card.id}"></div>
+    
+    
+    
+   
 
     </div>
+
+
 </div>
 
   `;
 
-  podcastContainer.addEventListener("click", () => {
-    console.log(`${card.title} clicked`);
-  });
+  
+  cardContainer.addEventListener("click", () => 
+    openModal(card.id))
+  
 
-  container$.appendChild(podcastContainer);
+  container$.appendChild(cardContainer);
+  DateUtility(card.updated, `cardDate-${card.id}`);
+  exportGenre(card.id, `cardGenre-${card.id}`);
+  exportGenre(card.id, `cardSeasons-${card.id}`);
 });
 }
