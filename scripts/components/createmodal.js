@@ -40,7 +40,7 @@
     <div class="podcastModal" data-podcast-id="${podcast.id}">
     <h3 class="modalPodcastTitle">${podcast.title}</h3> 
       <div class="modalImageContainer">
-        <img class="modalImage" src="${podcast.image}" alt="podcast image">
+        <img class="modalImage" src="${podcast.image || 'placeholder.jpg'}" alt="podcast image">
       </div>
       <div class="modalPodcastInfo"> 
         
@@ -52,16 +52,22 @@
 
 
       <h4>Seasons:</h4> 
-      <p id="modalSeasons-${podcast.id}" class="podcastSeason"></p>
+      <div id="modalSeasons-${podcast.id}" class="seasonContainer"></div>
+      <div class="seasonCard">
+        <h4>${podcast.id}</h4>
+        <p>${podcast.id} episodes</p>
+      </div>
     </div>
      
     `;
 
+    
+
      // Append the modal content to the modal container
 
    modalContent$.appendChild(modalInfo);
-   modal.style.display = "flex";          // Display the modal
-
+   
+   modal.style.display = "flex"; 
 
    // Click Close button 
 
@@ -82,5 +88,5 @@ window.addEventListener("click", (e) => {
 
   DateUtility(podcast.updated, `modalDate-${podcast.id}`);
   exportGenre(podcast.id, `modalGenre-${podcast.id}`);
-  exportSeasons(podcast.id, `modalSeasons-${podcast.id}`);
+  exportSeasons(podcast.id, `seasonCard-${podcast.id}`);
 }
