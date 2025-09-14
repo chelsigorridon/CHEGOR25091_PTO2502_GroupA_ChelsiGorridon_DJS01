@@ -14,6 +14,7 @@ export function exportSeasons(podcastId, elementId) {
     .map(season => `${season.title} (${season.episodes} episodes)`)
     .join("<br>");
 
-  season$.innerHTML = "";
+ 
   season$.appendChild(seasonContainer);
+
 }

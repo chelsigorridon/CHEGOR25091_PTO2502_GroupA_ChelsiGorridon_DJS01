@@ -15,17 +15,18 @@
   modalInfo.innerHTML = `
     <span id="close-modal-btn">&times;</span>
     <div class="podcastModal" data-podcast-id="${podcast.id}">
+    <h3 class="modalPodcastTitle">${podcast.title}</h3> 
       <div class="modalImageContainer">
         <img class="modalImage" src="${podcast.image}" alt="podcast image">
       </div>
       <div class="modalPodcastInfo"> 
-        <h3 class="modalPodcastTitle">${podcast.title}</h3> 
+        
         <p class="modalPodcastDescription">${podcast.description}</p> 
         <div id="modalDate-${podcast.id}" class="cardDate"></div>
+        <h4>Genres:</h4> 
+      <div id="modalGenre-${podcast.id}"></div>
       </div>
 
-      <h4>Genres:</h4> 
-      <div id="modalGenre-${podcast.id}"></div>
 
       <h4>Seasons:</h4> 
       <p id="modalSeasons-${podcast.id}" class="podcastSeason"></p>

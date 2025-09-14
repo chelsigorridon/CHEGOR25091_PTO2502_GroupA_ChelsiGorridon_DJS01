@@ -10,11 +10,12 @@ export function ExportToMain(podcastContainer) {
   container$.innerHTML = "";
 
 podcasts.forEach(card => {
-    
-const cardContainer = document.createElement("div")
-cardContainer.className =("cardContainer");
 
-    
+
+const cardContainer = document.createElement("div")
+cardContainer.className =("cardContainer"); 
+
+
 cardContainer.innerHTML = `
 
 <div class="podcastCard" data-podcast-id="${card.id}">
@@ -24,15 +25,17 @@ cardContainer.innerHTML = `
     <div class="podcastInfo">
     <h3 class="podcastTitle">${card.title}</h3>
     <div id="cardGenre-${card.id}"></div>
-   <div id="cardDate-${card.id}" class="cardDate"></div>
-    <p id="cardSeasons-${card.id}" class="podcastSeason"></p>
-
+    <div id="cardDate-${card.id}" class="cardDate"> </div>
+   
+    
     </div>
 
 
 </div>
 
+
   `;
+
 
   
   cardContainer.addEventListener("click", () => 
