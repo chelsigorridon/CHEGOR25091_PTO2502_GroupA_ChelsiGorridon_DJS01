@@ -1,18 +1,19 @@
- import { seasons} from "../data.js"
+import { seasons } from "../data.js";
 
-export function exportSeasons (podcastId, elementId) {
-  const seasons$ = document.getElementById(elementId);
-  seasons$.innerHTML = "";
+export function exportSeasons(podcastId, elementId) {
+  const season$ = document.getElementById(elementId);
+  if (!season$) return;
 
-  const seasonsContainer = document.createElement("div");
-  seasonsContainer.className = "seasons_Container";
+  const podcastSeasons = seasons.find(s => s.id === podcastId);
+  if (!podcastSeasons) return;
 
-  const seasonList = seasons
-      .filter(s => s.seasonDetails.includes(podcastId)) 
-      .map(s => s.title)
-      .join(", ");
-  
-    seasonsContainer.innerHTML = `<p>${seasonList}</p>`;
-  
-    seasons$.appendChild(seasonsContainer);
-  }
+  const seasonContainer = document.createElement("div");
+  seasonContainer.className = "seasonContainer";
+
+  seasonContainer.innerHTML = podcastSeasons.seasonDetails
+    .map(season => `${season.title} (${season.episodes} episodes)`)
+    .join("<br>");
+
+  season$.innerHTML = "";
+  season$.appendChild(seasonContainer);
+}
