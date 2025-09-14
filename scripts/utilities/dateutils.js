@@ -1,9 +1,5 @@
 
-export function DateUtility(dateString, elementId) {
-  const date$ = document.getElementById(elementId);
-  date$.innerHTML = "";
-
- /**
+/**
  * Renders a formatted date inside a specified DOM element.
  *
  * @param {string|Date} dateString - A date string or Date object to format and display.
@@ -12,12 +8,13 @@ export function DateUtility(dateString, elementId) {
  * @function
  * @export
  */
-export function DateUtility(dateString, elementId) {
-  /**
-   * The DOM element that will display the date.
-   * @type {HTMLElement}
-   */
 
+
+
+export function DateUtility(dateString, elementId) {
+  const date$ = document.getElementById(elementId);
+  date$.innerHTML = "";
+                                                      
   // Create a container to hold the formatted date
 
   const dateContainer = document.createElement("div");
