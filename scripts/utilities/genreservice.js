@@ -26,8 +26,8 @@ export function exportGenre(podcastId, elementId) {
 
   genreContainer.innerHTML = filteredGenres
     .map(g => `<span class="genre">${g.title}</span>`)
-    .join(", ");
-}
+    .join("");
+
   genre$.innerHTML = "";
   genre$.appendChild(genreContainer);
-
+}

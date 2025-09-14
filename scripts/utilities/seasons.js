@@ -22,19 +22,24 @@ export function exportSeasons(podcastId, elementId) {
 
  // Find the season data for the given podcast ID
 
-  const podcastSeasons = seasons.find(s => s.id === podcastId);
-  if (!podcastSeasons) return;
-
- // Populate the container with formatted season details
+   const podcastSeasons = seasons.filter(s => s.podcastId === podcastId);
+  if (podcastSeasons.length === 0) return;
 
   const seasonContainer = document.createElement("div");
   seasonContainer.className = "seasonContainer";
 
-  seasonContainer.innerHTML = podcastSeasons.seasonDetails
-    .map(season => `${season.title} (${season.episodes} episodes)`)
-    .join("<br>");
-
+  // Build season cards
+  seasonContainer.innerHTML = podcastSeasons
+   .flatMap(podcast => podcast.seasonDetails)
+    .map(season => `
+      <div class="seasonCard">
+        <h4>${season.title}</h4>
+        <p>${season.episodes} episodes</p>
+      </div>
+    `)
+    .join("");
  
+  season$.innerHTML = "";  
   season$.appendChild(seasonContainer);
 
 }
