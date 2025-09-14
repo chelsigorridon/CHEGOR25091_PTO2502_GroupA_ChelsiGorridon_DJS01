@@ -49,8 +49,10 @@ cardContainer.innerHTML = `
     <h3 class="podcastTitle">${card.title}</h3>
     <div id="cardGenre-${card.id}"></div>
     <div id="cardDate-${card.id}" class="cardDate"> </div>
-   
-    
+    <div id="cardSeasons-${card.id}" class="cardSeasons"> </div>
+   <div id="seasonCard">
+        <div>${card.id} episodes </div>
+      </div>
     </div>
 
 
@@ -60,10 +62,11 @@ cardContainer.innerHTML = `
   `;
 
     // Attach event listener to open modal on click
-  
-  cardContainer.addEventListener("click", () => 
-    openModal(card))
-  
+  modal.style.display = "flex" 
+  cardContainer.addEventListener("click", () => openModal(card))
+         
+    
+
  // Append the card to the main container
 
   container$.appendChild(cardContainer);
@@ -72,7 +75,13 @@ cardContainer.innerHTML = `
    
   DateUtility(card.updated, `cardDate-${card.id}`);
   exportGenre(card.id, `cardGenre-${card.id}`);
-  exportSeasons(card.id, `cardSeasons-${card.id}`);
+  exportSeasons(card.id, `seasonCard-${card.id}`);
+
   
 });
 }
+
+ 
+  
+
+  
