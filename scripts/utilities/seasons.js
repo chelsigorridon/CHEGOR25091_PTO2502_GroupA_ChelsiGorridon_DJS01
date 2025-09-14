@@ -16,4 +16,3 @@ export function exportSeasons (podcastId, elementId) {
   
     seasons$.appendChild(seasonsContainer);
   }
-   

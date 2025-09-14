@@ -18,8 +18,9 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 10px;
   padding: 15px;
-  background-color: rgb(186, 234, 219);
+  background-color: rgb(9, 106, 75);
   width: 100%;
+  border-radius: 8px;
 }
 
 .podcastheader {
@@ -66,8 +67,8 @@ body {
   margin: 10px 0;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 300px;
-  height: 500px;
+  width: auto;
+  height: auto;
   
 }
 
@@ -111,23 +112,31 @@ body {
   
 }
 
-.close-modal-btn {
+#close-modal-btn {
   float: right;
   cursor: pointer;
   font-size: 20px;
   color: red;
+ 
+  width: 20px;
+  height: 20px;
 }
 
 .modalImageContainer{
-   max-width: 300px;
-  max-height: 200px;
+   max-width: 250px;
+  max-height: 250px;
   display: block;
-  margin: 0 auto; 
+  margin-right: 100px; 
 }
 
 
 .modalImage {
   width: 100%;
-  height: 150px;
+  height: 200px;
   object-fit: cover;
+}
+
+.modalPodcastInfo {
+  display: flex;
+  flex-direction: column;
 }

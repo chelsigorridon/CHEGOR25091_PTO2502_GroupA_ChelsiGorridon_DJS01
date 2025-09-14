@@ -1,56 +1,57 @@
- 
- import { podcasts, genres, seasons } from "../data.js"
- 
+
+ import { DateUtility } from "../utilities/dateutils.js";
+ import { exportGenre } from "../utilities/genreservice.js";
+ import { exportSeasons } from "../utilities/seasons.js";
+
+
    const modal = document.getElementById("modal");
    const modalContent$ = document.getElementById("modalContent");
-   const closemodalBtn$ = document.getElementById("close-modal-btn");
-
-
+   
    export function openModal (podcast) {
-  
-     
-  modalContent$.innerHTML = "";
+   modalContent$.innerHTML = "";
  
   const modalInfo = document.createElement("div");
   modalInfo.className = ("modalInfo");
 
   modalInfo.innerHTML = `
-    <div class="modalImageContainer"> <img class="modalImage" src="${podcast.image}" alt="podcast image"> </div> 
-    <div class="modalPodcastInfo"> 
-    <h3 class="modalPodcastTitle">${podcast.title}</h3> 
-    <p class="modalPodcastDescription">${podcast.description}</p> 
-    <p class="modalPodcastGenre">Genre: ${podcast.genres}</p> 
-    <p class="modalPodcastDate">Updated: ${podcast.updated}</p>
-<h4>Genres:</h4> 
-<ul>
-  ${genres
-    .filter(g => g.podcastId === podcast.id)
-    .map(g => `<li>${g.name}</li>`)
-    .join("")}
-</ul>
+    <span id="close-modal-btn">&times;</span>
+    <div class="podcastModal" data-podcast-id="${podcast.id}">
+      <div class="modalImageContainer">
+        <img class="modalImage" src="${podcast.image}" alt="podcast image">
+      </div>
+      <div class="modalPodcastInfo"> 
+        <h3 class="modalPodcastTitle">${podcast.title}</h3> 
+        <p class="modalPodcastDescription">${podcast.description}</p> 
+        <div id="modalDate-${podcast.id}" class="cardDate"></div>
+      </div>
 
-<h4>Seasons:</h4> 
-<ul>
-  ${seasons
-    .filter(s => s.podcastId === podcast.id)
-    .map(s => `<li>${s.seasonDetails}</li>`)
-    .join("")}
-</ul>
-    
+      <h4>Genres:</h4> 
+      <div id="modalGenre-${podcast.id}"></div>
+
+      <h4>Seasons:</h4> 
+      <p id="modalSeasons-${podcast.id}" class="podcastSeason"></p>
+    </div>
+     
     `;
-   
+
+   modalContent$.appendChild(modalInfo);
    modal.style.display = "flex";
-  modalContent$.appendChild(modalInfo);
- 
 
-  };
 
- closemodalBtn$.addEventListener("click", () => {
-  modal.style.display = "none";
-});
+  
+  const closemodalBtn$ = modalContent$.querySelector("#close-modal-btn");
+  closemodalBtn$.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
 
 window.addEventListener("click", (e) => {
   if (e.target === modal) {
     modal.style.display = "none";
   }
 });
+
+  DateUtility(podcast.updated, `modalDate-${podcast.id}`);
+  exportGenre(podcast.id, `modalGenre-${podcast.id}`);
+  exportSeasons(podcast.id, `modalSeasons-${podcast.id}`);
+}

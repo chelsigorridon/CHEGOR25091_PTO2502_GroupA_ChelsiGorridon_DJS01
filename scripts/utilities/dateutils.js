@@ -1,4 +1,3 @@
-
 export function DateUtility(dateString, elementId) {
   const date$ = document.getElementById(elementId);
   date$.innerHTML = "";
